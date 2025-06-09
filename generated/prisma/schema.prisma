@@ -1,0 +1,111 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  USER
+  MANAGER
+  SUPERVISOR
+  LEADER
+  STAFF
+}
+
+enum RequestStatus {
+  PENDING_APPROVAL
+  APPROVED_BY_DEPARTMENT
+  PENDING_PC
+  APPROVED_BY_PC
+  REJECTED
+}
+
+enum ApprovalRole {
+  LEADER
+  SUPERVISOR
+  MANAGER
+  STAFF
+}
+
+model User {
+  id_users      Int    @id @default(autoincrement())
+  id_department Int
+  name          String
+  role          Role
+  email         String @unique
+  no_hp         String
+  password      String
+
+  department    Department      @relation(fields: [id_department], references: [id_department])
+  requestKanban RequestKanban[]
+  persetujuan   Persetujuan[]
+  notifications Notification[]
+
+  @@map("users")
+}
+
+model Department {
+  id_department Int    @id @default(autoincrement())
+  name          String
+
+  users         User[]
+  requestKanban RequestKanban[]
+  persetujuan   Persetujuan[]
+
+  @@map("departemen")
+}
+
+model RequestKanban {
+  id_kanban     Int           @id @default(autoincrement())
+  id_users      Int
+  id_department Int
+  tgl_produksi  DateTime
+  parts_number  String
+  lokasi        String
+  box           String
+  klasifikasi   String
+  keterangan    String
+  status        RequestStatus @default(PENDING_APPROVAL)
+
+  user          User           @relation(fields: [id_users], references: [id_users])
+  department    Department     @relation(fields: [id_department], references: [id_department])
+  persetujuan   Persetujuan[]
+  notifications Notification[]
+
+  @@map("request_kanban")
+}
+
+model Persetujuan {
+  id_users      Int
+  id_department Int
+  id_kanban     Int
+  role          ApprovalRole
+  approve       Boolean
+  approvedAt    DateTime?
+
+  user          User          @relation(fields: [id_users], references: [id_users])
+  department    Department    @relation(fields: [id_department], references: [id_department])
+  requestKanban RequestKanban @relation(fields: [id_kanban], references: [id_kanban])
+
+  @@id([id_users, id_department, id_kanban, role])
+  @@map("persetujuan")
+}
+
+model Notification {
+  id       Int      @id @default(autoincrement())
+  userId   Int
+  kanbanId Int
+  type     String // "email", "whatsapp"
+  message  String
+  sentAt   DateTime @default(now())
+
+  user   User          @relation(fields: [userId], references: [id_users])
+  kanban RequestKanban @relation(fields: [kanbanId], references: [id_kanban])
+
+  @@map("notification")
+}
