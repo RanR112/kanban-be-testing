@@ -19,9 +19,10 @@ userRouter.use(authenticateToken);
 
 userRouter.get("/", authorizeAdmin, getAllUsers);
 userRouter.get("/:id", authorizeAdmin, getUserById);
-userRouter.get("/me/:id", getMeById);
 userRouter.post("/", authorizeAdmin, createUser);
 userRouter.put("/:id", authorizeAdmin, updateUser);
 userRouter.delete("/:id", authorizeAdmin, deleteUser);
+userRouter.get("/me/:id", getMeById);
+userRouter.put("/me/:id", updateUser);
 
 module.exports = userRouter;

@@ -9,7 +9,7 @@ const {
     NOTE,
     REJECTED_NOTES,
     REJECTED_STATUSES,
-} = require("../global/constants");
+} = require("../utils/constants");
 
 /**
  * Get all Kanban requests with pagination

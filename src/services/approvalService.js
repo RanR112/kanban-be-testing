@@ -1,7 +1,7 @@
 const prisma = require("../../prisma/client");
 const Persetujuan = require("../models/Persetujuan");
 const RequestKanban = require("../models/RequestKanban");
-const { PC_DEPARTMENT_ID, APPROVAL_ROLES, STATUS, NOTE } = require("../global/constants");
+const { PC_DEPARTMENT_ID, APPROVAL_ROLES, STATUS, NOTE } = require("../utils/constants");
 
 class ApprovalService {
     /**
