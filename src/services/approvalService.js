@@ -18,6 +18,7 @@ class ApprovalService {
                 id_department: true,
                 role: true,
                 name: true,
+                no_hp: true,
                 email: true,
             },
         });
