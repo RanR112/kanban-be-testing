@@ -17,10 +17,20 @@ const colors = {
 
 // Helper function to add company header
 function addCompanyHeader(doc) {
-    doc.image("../../public/images/logo.png", 35, 15, {
-        width: 90,
-        height: 90,
-    });
+    const logoPath = path.join(__dirname, "../../public/images/logo.png");
+
+    try {
+        doc.image(logoPath, 35, 15, {
+            width: 90,
+            height: 90,
+        });
+    } catch (error) {
+        console.warn("Logo tidak ditemukan:", logoPath);
+        doc.fontSize(12)
+            .fillColor(colors.primary)
+            .font("Helvetica-Bold")
+            .text("AFID", 35, 50);
+    }
 
     // Company info
     doc.fontSize(18)
@@ -31,7 +41,11 @@ function addCompanyHeader(doc) {
     doc.fontSize(10)
         .fillColor(colors.secondary)
         .font("Helvetica")
-        .text("Kawasan Industri Mitra Karawang, Jl. Mitra Selatan IV Blok M3 & M4, Parungmulya, Ciampel, Karawang 41363 West Java, Indonesia", 130, 55)
+        .text(
+            "Kawasan Industri Mitra Karawang, Jl. Mitra Selatan IV Blok M3 & M4, Parungmulya, Ciampel, Karawang 41363 West Java, Indonesia",
+            130,
+            55
+        )
         .text("Telp: (0267) 8633999", 130, 80);
 
     // Separator line
@@ -236,32 +250,32 @@ function addTableRow(doc, item, rowY, isEven) {
             width: 75,
             ellipsis: true,
             height: 15,
-            align: "center"
+            align: "center",
         })
         .text(item.department, 215, rowY + 5, {
             width: 60,
             ellipsis: true,
             height: 15,
-            align: "center"
+            align: "center",
         })
         .text(item.parts_number, 275, rowY + 5, {
             width: 70,
             ellipsis: true,
             height: 15,
-            align: "center"
+            align: "center",
         })
         .text(item.lokasi, 345, rowY + 5, {
             width: 50,
             ellipsis: true,
             height: 15,
-            align: "center"
+            align: "center",
         })
         .text(item.box, 395, rowY + 8, { width: 35, align: "center" })
         .text(item.klasifikasi, 430, rowY + 5, {
             width: 50,
             ellipsis: true,
             height: 15,
-            align: "center"
+            align: "center",
         });
 
     // Status with color
@@ -271,7 +285,7 @@ function addTableRow(doc, item, rowY, isEven) {
             width: 65,
             ellipsis: true,
             height: 15,
-            align: "center"
+            align: "center",
         });
 
     return rowY + rowHeight;
