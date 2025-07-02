@@ -17,7 +17,7 @@ const colors = {
 
 // Helper function to add company header
 function addCompanyHeader(doc) {
-    doc.image("src/assets/logo.png", 35, 15, {
+    doc.image("public/images/logo.png", 35, 15, {
         width: 90,
         height: 90,
     });
