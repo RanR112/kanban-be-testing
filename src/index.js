@@ -6,7 +6,7 @@ const compression = require("compression");
 
 // Import enhanced utilities
 const { config, configManager } = require("./config");
-const { healthChecker, performanceMonitor } = require("./utils/logger");
+// const { healthChecker, performanceMonitor } = require("./utils/logger");
 const {
     globalErrorHandler,
     sanitizeInput,
@@ -124,28 +124,28 @@ app.use(sanitizeInput);
 /**
  * HEALTH CHECK ENDPOINT
  */
-app.get("/health", async (req, res) => {
-    try {
-        const healthResult = await healthChecker.runChecks();
+// app.get("/health", async (req, res) => {
+//     try {
+//         const healthResult = await healthChecker.runChecks();
 
-        const status = healthResult.status === "healthy" ? 200 : 503;
+//         const status = healthResult.status === "healthy" ? 200 : 503;
 
-        res.status(status).json({
-            success: healthResult.status === "healthy",
-            ...healthResult,
-            uptime: process.uptime(),
-            version: config.app.version,
-            environment: config.app.environment,
-        });
-    } catch (error) {
-        res.status(503).json({
-            success: false,
-            status: "unhealthy",
-            timestamp: new Date().toISOString(),
-            error: error.message,
-        });
-    }
-});
+//         res.status(status).json({
+//             success: healthResult.status === "healthy",
+//             ...healthResult,
+//             uptime: process.uptime(),
+//             version: config.app.version,
+//             environment: config.app.environment,
+//         });
+//     } catch (error) {
+//         res.status(503).json({
+//             success: false,
+//             status: "unhealthy",
+//             timestamp: new Date().toISOString(),
+//             error: error.message,
+//         });
+//     }
+// });
 
 /**
  * API ROUTES
@@ -153,61 +153,61 @@ app.get("/health", async (req, res) => {
 app.use(config.api.prefix, router);
 
 // Admin monitoring endpoints
-app.get("/api/v2/admin/metrics", async (req, res) => {
-    try {
-        // Add proper admin authentication here
-        const metrics = performanceMonitor.getAllMetrics();
-        const healthStatus = healthChecker.getLastCheck();
+// app.get("/api/v2/admin/metrics", async (req, res) => {
+//     try {
+//         // Add proper admin authentication here
+//         const metrics = performanceMonitor.getAllMetrics();
+//         const healthStatus = healthChecker.getLastCheck();
 
-        res.json({
-            success: true,
-            data: {
-                performance: metrics,
-                health: healthStatus,
-                config: configManager.healthCheck(),
-                uptime: process.uptime(),
-                memory: process.memoryUsage(),
-            },
-        });
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: "Failed to get system metrics",
-        });
-    }
-});
+//         res.json({
+//             success: true,
+//             data: {
+//                 performance: metrics,
+//                 health: healthStatus,
+//                 config: configManager.healthCheck(),
+//                 uptime: process.uptime(),
+//                 memory: process.memoryUsage(),
+//             },
+//         });
+//     } catch (error) {
+//         res.status(500).json({
+//             success: false,
+//             message: "Failed to get system metrics",
+//         });
+//     }
+// });
 
-app.get("/api/v2/admin/cleanup/stats", async (req, res) => {
-    try {
-        const stats = CleanupService.getStats();
-        res.json({
-            success: true,
-            data: stats,
-        });
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: "Failed to get cleanup stats",
-        });
-    }
-});
+// app.get("/api/v2/admin/cleanup/stats", async (req, res) => {
+//     try {
+//         const stats = CleanupService.getStats();
+//         res.json({
+//             success: true,
+//             data: stats,
+//         });
+//     } catch (error) {
+//         res.status(500).json({
+//             success: false,
+//             message: "Failed to get cleanup stats",
+//         });
+//     }
+// });
 
-app.post("/api/v2/admin/cleanup/manual", async (req, res) => {
-    try {
-        const { type = "regular" } = req.body;
-        await CleanupService.manualCleanup(type);
+// app.post("/api/v2/admin/cleanup/manual", async (req, res) => {
+//     try {
+//         const { type = "regular" } = req.body;
+//         await CleanupService.manualCleanup(type);
 
-        res.json({
-            success: true,
-            message: `Manual ${type} cleanup completed`,
-        });
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: "Manual cleanup failed",
-        });
-    }
-});
+//         res.json({
+//             success: true,
+//             message: `Manual ${type} cleanup completed`,
+//         });
+//     } catch (error) {
+//         res.status(500).json({
+//             success: false,
+//             message: "Manual cleanup failed",
+//         });
+//     }
+// });
 
 /**
  * 404 HANDLER
@@ -231,51 +231,51 @@ app.use(globalErrorHandler);
 /**
  * GRACEFUL SHUTDOWN
  */
-const gracefulShutdown = async (signal) => {
-    console.log(`${signal} received. Starting graceful shutdown...`);
+// const gracefulShutdown = async (signal) => {
+//     console.log(`${signal} received. Starting graceful shutdown...`);
 
-    try {
-        // Stop cleanup service
-        CleanupService.stopScheduler();
-        console.log("Cleanup service stopped");
+//     try {
+//         // Stop cleanup service
+//         CleanupService.stopScheduler();
+//         console.log("Cleanup service stopped");
 
-        // Close database connections
-        const prisma = require("../prisma/client");
-        await prisma.$disconnect();
-        console.log("Database disconnected");
+//         // Close database connections
+//         const prisma = require("../prisma/client");
+//         await prisma.$disconnect();
+//         console.log("Database disconnected");
 
-        // Close email service
-        await EmailService.close();
-        console.log("Email service closed");
+//         // Close email service
+//         await EmailService.close();
+//         console.log("Email service closed");
 
-        console.log("Graceful shutdown completed");
-        process.exit(0);
-    } catch (error) {
-        console.error("Error during graceful shutdown:", error.message);
-        process.exit(1);
-    }
-};
+//         console.log("Graceful shutdown completed");
+//         process.exit(0);
+//     } catch (error) {
+//         console.error("Error during graceful shutdown:", error.message);
+//         process.exit(1);
+//     }
+// };
 
 // Handle shutdown signals
-process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
-process.on("SIGINT", () => gracefulShutdown("SIGINT"));
+// process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
+// process.on("SIGINT", () => gracefulShutdown("SIGINT"));
 
 // Handle uncaught exceptions
-process.on("uncaughtException", (error) => {
-    console.error("Uncaught Exception:", error.message, error.stack);
-    gracefulShutdown("UNCAUGHT_EXCEPTION");
-});
+// process.on("uncaughtException", (error) => {
+//     console.error("Uncaught Exception:", error.message, error.stack);
+//     gracefulShutdown("UNCAUGHT_EXCEPTION");
+// });
 
-process.on("unhandledRejection", (reason, promise) => {
-    console.error("Unhandled Rejection:", reason, promise);
-    gracefulShutdown("UNHANDLED_REJECTION");
-});
+// process.on("unhandledRejection", (reason, promise) => {
+//     console.error("Unhandled Rejection:", reason, promise);
+//     gracefulShutdown("UNHANDLED_REJECTION");
+// });
 
 /**
  * START SERVER
  */
 const startServer = async () => {
-    const timerId = performanceMonitor.startTimer("server_startup");
+    // const timerId = performanceMonitor.startTimer("server_startup");
 
     try {
         // Validate configuration
@@ -306,16 +306,16 @@ const startServer = async () => {
         console.log("Cleanup service started");
 
         // Start health monitoring
-        if (config.monitoring.enabled) {
-            setInterval(async () => {
-                await healthChecker.runChecks();
-            }, config.monitoring.healthCheckInterval);
-            console.log("Health monitoring started");
-        }
+        // if (config.monitoring.enabled) {
+        //     setInterval(async () => {
+        //         await healthChecker.runChecks();
+        //     }, config.monitoring.healthCheckInterval);
+        //     console.log("Health monitoring started");
+        // }
 
         // Start HTTP server
         const server = app.listen(config.app.port, config.app.host, () => {
-            performanceMonitor.endTimer(timerId);
+            // performanceMonitor.endTimer(timerId);
 
             console.log("Server started successfully:", {
                 port: config.app.port,
