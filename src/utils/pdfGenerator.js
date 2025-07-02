@@ -1,5 +1,6 @@
 const PDFDocument = require("pdfkit");
 const { format } = require("date-fns");
+const path = require('path');
 const { id } = require("date-fns/locale");
 
 // Color scheme
