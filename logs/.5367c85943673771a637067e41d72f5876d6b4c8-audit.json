@@ -1,0 +1,35 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Job\\Request Kanban\\Request Kanban - Copy\\kanban-be\\logs\\.5367c85943673771a637067e41d72f5876d6b4c8-audit.json",
+    "files": [
+        {
+            "date": 1751102031590,
+            "name": "C:\\Job\\Request Kanban\\Request Kanban - Copy\\kanban-be\\logs\\application-2025-06-28.log",
+            "hash": "7ec128c7072687145e745fe236b062f0be9b91a8e9631cc42eae0b5f59e4d5ae"
+        },
+        {
+            "date": 1751188417286,
+            "name": "C:\\Job\\Request Kanban\\Request Kanban - Copy\\kanban-be\\logs\\application-2025-06-29.log",
+            "hash": "d019a12654f17a570ff9bc56476ffedcfdab5a5e8a6780b6a9ee9b1138b7e5cd"
+        },
+        {
+            "date": 1751216449168,
+            "name": "C:\\Job\\Request Kanban\\Request Kanban - Copy\\kanban-be\\logs\\application-2025-06-30.log",
+            "hash": "be9019bdc8f8b7be6f8e345fc346cfa760d91fb15871c942f161588169ca4525"
+        },
+        {
+            "date": 1751316598195,
+            "name": "C:\\Job\\Request Kanban\\Request Kanban - Copy\\kanban-be\\logs\\application-2025-07-01.log",
+            "hash": "5da37b74eab4f3b5641a3464134fc7439b8b266619877f7d718e1f0baadb5e42"
+        },
+        {
+            "date": 1751389360624,
+            "name": "C:\\Job\\Request Kanban\\Request Kanban - Copy\\kanban-be\\logs\\application-2025-07-02.log",
+            "hash": "aff8681f3bde92a9b99bbf52c95eb3834451bcdd762a92c9ed2f538e4cdba257"
+        }
+    ],
+    "hashType": "sha256"
+}

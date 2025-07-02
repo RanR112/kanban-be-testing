@@ -1,0 +1,76 @@
+{"timestamp":"2025-06-28 16:13:52","level":"info","message":"Database connected successfully","service":"kanban-system","version":"1.0.0"}
+{"timestamp":"2025-06-28 16:13:54","level":"info","message":"Email service configured successfully","service":"kanban-system","version":"1.0.0"}
+{"timestamp":"2025-06-28 16:13:54","level":"info","message":"Cleanup service started","service":"kanban-system","version":"1.0.0"}
+{"timestamp":"2025-06-28 16:13:54","level":"info","message":"Health monitoring started","service":"kanban-system","version":"1.0.0"}
+{"timestamp":"2025-06-28 16:13:54","level":"info","message":"Performance metric","service":"kanban-system","version":"1.0.0","operation":"server_startup","duration_ms":2161.3338,"metadata":{}}
+{"timestamp":"2025-06-28 16:13:54","level":"info","message":"Server started successfully","service":"kanban-system","version":"1.0.0","port":3000,"host":"localhost","environment":"development","healthCheck":"http://localhost:3000/health"}
+{"timestamp":"2025-06-28 16:13:54","level":"info","message":"Development mode features enabled","service":"kanban-system","version":"1.0.0","debug":true}
+{"timestamp":"2025-06-28 16:18:31","level":"info","message":"Database connected successfully","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 16:18:33","level":"info","message":"Email service configured successfully","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 16:18:33","level":"info","message":"Cleanup service started","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 16:18:33","level":"info","message":"Health monitoring started","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 16:18:33","level":"info","message":"Performance metric","service":"kanban-system","version":"2.0.0","operation":"server_startup","duration_ms":2179.5346,"metadata":{}}
+{"timestamp":"2025-06-28 16:18:33","level":"info","message":"Server started successfully","service":"kanban-system","version":"2.0.0","port":3000,"host":"localhost","environment":"development","healthCheck":"http://localhost:3000/health"}
+{"timestamp":"2025-06-28 16:18:33","level":"info","message":"Development mode features enabled","service":"kanban-system","version":"2.0.0","debug":true}
+{"timestamp":"2025-06-28 16:19:34","level":"info","message":"SIGINT received. Starting graceful shutdown...","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 16:19:39","level":"info","message":"Database connected successfully","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 16:19:41","level":"info","message":"Email service configured successfully","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 16:19:41","level":"info","message":"Cleanup service started","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 16:19:41","level":"info","message":"Health monitoring started","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 16:19:41","level":"info","message":"Performance metric","service":"kanban-system","version":"2.0.0","operation":"server_startup","duration_ms":1532.4177,"metadata":{}}
+{"timestamp":"2025-06-28 16:19:41","level":"info","message":"Server started successfully","service":"kanban-system","version":"2.0.0","port":3000,"host":"localhost","environment":"development","healthCheck":"http://localhost:3000/health"}
+{"timestamp":"2025-06-28 16:19:41","level":"info","message":"Development mode features enabled","service":"kanban-system","version":"2.0.0","debug":true}
+{"timestamp":"2025-06-28 16:35:43","level":"info","message":"Health check completed","service":"kanban-system","version":"2.0.0","status":"healthy","checksCount":2,"healthyCount":2}
+{"timestamp":"2025-06-28 16:40:40","level":"info","message":"Health check completed","service":"kanban-system","version":"2.0.0","status":"healthy","checksCount":2,"healthyCount":2}
+{"timestamp":"2025-06-28 16:45:40","level":"info","message":"Health check completed","service":"kanban-system","version":"2.0.0","status":"healthy","checksCount":2,"healthyCount":2}
+{"timestamp":"2025-06-28 16:50:40","level":"info","message":"Health check completed","service":"kanban-system","version":"2.0.0","status":"healthy","checksCount":2,"healthyCount":2}
+{"timestamp":"2025-06-28 16:55:40","level":"info","message":"Health check completed","service":"kanban-system","version":"2.0.0","status":"healthy","checksCount":2,"healthyCount":2}
+{"timestamp":"2025-06-28 17:00:40","level":"info","message":"Health check completed","service":"kanban-system","version":"2.0.0","status":"healthy","checksCount":2,"healthyCount":2}
+{"timestamp":"2025-06-28 17:05:40","level":"info","message":"Health check completed","service":"kanban-system","version":"2.0.0","status":"healthy","checksCount":2,"healthyCount":2}
+{"timestamp":"2025-06-28 17:10:40","level":"info","message":"Health check completed","service":"kanban-system","version":"2.0.0","status":"healthy","checksCount":2,"healthyCount":2}
+{"timestamp":"2025-06-28 17:15:40","level":"info","message":"Health check completed","service":"kanban-system","version":"2.0.0","status":"healthy","checksCount":2,"healthyCount":2}
+{"timestamp":"2025-06-28 17:19:07","level":"info","message":"Incoming request","service":"kanban-system","version":"2.0.0","method":"POST","url":"/api/v2/registration/register","ip":"::1","userAgent":"PostmanRuntime/7.37.3","requestId":"http_request_1751105947844_0.14084235866382988"}
+{"timestamp":"2025-06-28 17:19:07","level":"info","message":"Performance metric","service":"kanban-system","version":"2.0.0","operation":"http_request","duration_ms":2.3883,"metadata":{"method":"POST","url":"/api/v2/registration/register","userAgent":"PostmanRuntime/7.37.3","ip":"::1"}}
+{"timestamp":"2025-06-28 17:19:07","level":"info","message":"Request completed","service":"kanban-system","version":"2.0.0","method":"POST","url":"/api/v2/registration/register","statusCode":401,"duration_ms":2.3883,"requestId":"http_request_1751105947844_0.14084235866382988","success":false}
+{"timestamp":"2025-06-28 17:20:40","level":"info","message":"Health check completed","service":"kanban-system","version":"2.0.0","status":"healthy","checksCount":2,"healthyCount":2}
+{"timestamp":"2025-06-28 17:21:23","level":"info","message":"Incoming request","service":"kanban-system","version":"2.0.0","method":"POST","url":"/api/v2/registration/register","ip":"::1","userAgent":"PostmanRuntime/7.37.3","requestId":"http_request_1751106083295_0.5268795585182562"}
+{"timestamp":"2025-06-28 17:21:23","level":"info","message":"Performance metric","service":"kanban-system","version":"2.0.0","operation":"http_request","duration_ms":1.5314,"metadata":{"method":"POST","url":"/api/v2/registration/register","userAgent":"PostmanRuntime/7.37.3","ip":"::1"}}
+{"timestamp":"2025-06-28 17:21:23","level":"info","message":"Request completed","service":"kanban-system","version":"2.0.0","method":"POST","url":"/api/v2/registration/register","statusCode":401,"duration_ms":1.5314,"requestId":"http_request_1751106083295_0.5268795585182562","success":false}
+{"timestamp":"2025-06-28 17:25:40","level":"info","message":"Health check completed","service":"kanban-system","version":"2.0.0","status":"healthy","checksCount":2,"healthyCount":2}
+{"timestamp":"2025-06-28 17:30:40","level":"info","message":"Health check completed","service":"kanban-system","version":"2.0.0","status":"healthy","checksCount":2,"healthyCount":2}
+{"timestamp":"2025-06-28 17:35:40","level":"info","message":"Health check completed","service":"kanban-system","version":"2.0.0","status":"healthy","checksCount":2,"healthyCount":2}
+{"timestamp":"2025-06-28 17:38:33","level":"info","message":"Incoming request","service":"kanban-system","version":"2.0.0","method":"POST","url":"/api/v2/registration/register","ip":"::1","userAgent":"PostmanRuntime/7.37.3","requestId":"http_request_1751107113910_0.19998890993431173"}
+{"timestamp":"2025-06-28 17:38:33","level":"info","message":"Performance metric","service":"kanban-system","version":"2.0.0","operation":"http_request","duration_ms":1.1776,"metadata":{"method":"POST","url":"/api/v2/registration/register","userAgent":"PostmanRuntime/7.37.3","ip":"::1"}}
+{"timestamp":"2025-06-28 17:38:33","level":"info","message":"Request completed","service":"kanban-system","version":"2.0.0","method":"POST","url":"/api/v2/registration/register","statusCode":401,"duration_ms":1.1776,"requestId":"http_request_1751107113910_0.19998890993431173","success":false}
+{"timestamp":"2025-06-28 17:40:40","level":"info","message":"Health check completed","service":"kanban-system","version":"2.0.0","status":"healthy","checksCount":2,"healthyCount":2}
+{"timestamp":"2025-06-28 17:45:40","level":"info","message":"Health check completed","service":"kanban-system","version":"2.0.0","status":"healthy","checksCount":2,"healthyCount":2}
+{"timestamp":"2025-06-28 17:48:55","level":"info","message":"Database connected successfully","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 17:48:56","level":"info","message":"Email service configured successfully","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 17:48:56","level":"info","message":"Cleanup service started","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 17:48:56","level":"info","message":"Health monitoring started","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 17:48:56","level":"info","message":"Performance metric","service":"kanban-system","version":"2.0.0","operation":"server_startup","duration_ms":1425.0771,"metadata":{}}
+{"timestamp":"2025-06-28 17:48:56","level":"info","message":"Server started successfully","service":"kanban-system","version":"2.0.0","port":3000,"host":"localhost","environment":"development","healthCheck":"http://localhost:3000/health"}
+{"timestamp":"2025-06-28 17:48:56","level":"info","message":"Development mode features enabled","service":"kanban-system","version":"2.0.0","debug":true}
+{"timestamp":"2025-06-28 17:49:02","level":"info","message":"Database connected successfully","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 17:49:03","level":"info","message":"Email service configured successfully","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 17:49:03","level":"info","message":"Cleanup service started","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 17:49:03","level":"info","message":"Health monitoring started","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 17:49:03","level":"info","message":"Performance metric","service":"kanban-system","version":"2.0.0","operation":"server_startup","duration_ms":1049.1515,"metadata":{}}
+{"timestamp":"2025-06-28 17:49:03","level":"info","message":"Server started successfully","service":"kanban-system","version":"2.0.0","port":3000,"host":"localhost","environment":"development","healthCheck":"http://localhost:3000/health"}
+{"timestamp":"2025-06-28 17:49:03","level":"info","message":"Development mode features enabled","service":"kanban-system","version":"2.0.0","debug":true}
+{"timestamp":"2025-06-28 17:49:08","level":"info","message":"Database connected successfully","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 17:49:12","level":"info","message":"Database connected successfully","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 17:49:13","level":"info","message":"Email service configured successfully","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 17:49:13","level":"info","message":"Cleanup service started","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 17:49:13","level":"info","message":"Health monitoring started","service":"kanban-system","version":"2.0.0"}
+{"timestamp":"2025-06-28 17:49:13","level":"info","message":"Performance metric","service":"kanban-system","version":"2.0.0","operation":"server_startup","duration_ms":939.8743,"metadata":{}}
+{"timestamp":"2025-06-28 17:49:13","level":"info","message":"Server started successfully","service":"kanban-system","version":"2.0.0","port":3000,"host":"localhost","environment":"development","healthCheck":"http://localhost:3000/health"}
+{"timestamp":"2025-06-28 17:49:13","level":"info","message":"Development mode features enabled","service":"kanban-system","version":"2.0.0","debug":true}
+{"timestamp":"2025-06-28 17:49:21","level":"info","message":"Incoming request","service":"kanban-system","version":"2.0.0","method":"POST","url":"/api/v2/registration/register","ip":"::1","userAgent":"PostmanRuntime/7.37.3","requestId":"http_request_1751107761285_0.9269579219025288"}
+{"timestamp":"2025-06-28 17:49:22","level":"info","message":"Performance metric","service":"kanban-system","version":"2.0.0","operation":"http_request","duration_ms":1542.0999,"metadata":{"method":"POST","url":"/api/v2/registration/register","userAgent":"PostmanRuntime/7.37.3","ip":"::1"}}
+{"timestamp":"2025-06-28 17:49:22","level":"info","message":"Request completed","service":"kanban-system","version":"2.0.0","method":"POST","url":"/api/v2/registration/register","statusCode":201,"duration_ms":1542.0999,"requestId":"http_request_1751107761285_0.9269579219025288","success":true}
+{"timestamp":"2025-06-28 17:49:52","level":"info","message":"Incoming request","service":"kanban-system","version":"2.0.0","method":"POST","url":"/api/v2/registration/register","ip":"::1","userAgent":"PostmanRuntime/7.37.3","requestId":"http_request_1751107792394_0.0035830654684698704"}
+{"timestamp":"2025-06-28 17:49:54","level":"info","message":"Performance metric","service":"kanban-system","version":"2.0.0","operation":"http_request","duration_ms":1782.4517,"metadata":{"method":"POST","url":"/api/v2/registration/register","userAgent":"PostmanRuntime/7.37.3","ip":"::1"}}
+{"timestamp":"2025-06-28 17:49:54","level":"info","message":"Request completed","service":"kanban-system","version":"2.0.0","method":"POST","url":"/api/v2/registration/register","statusCode":201,"duration_ms":1782.4517,"requestId":"http_request_1751107792394_0.0035830654684698704","success":true}
+{"timestamp":"2025-06-28 17:54:14","level":"info","message":"Health check completed","service":"kanban-system","version":"2.0.0","status":"healthy","checksCount":2,"healthyCount":2}
+{"timestamp":"2025-06-28 17:55:16","level":"info","message":"SIGINT received. Starting graceful shutdown...","service":"kanban-system","version":"2.0.0"}

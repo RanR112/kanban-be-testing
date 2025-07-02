@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["dataProxy"]
 }
 
@@ -33,20 +33,132 @@ enum ApprovalRole {
   STAFF
 }
 
+enum TokenType {
+  REFRESH_TOKEN
+  ACCESS_TOKEN
+  PASSWORD_RESET
+  EMAIL_VERIFICATION
+}
+
+enum OtpType {
+  PASSWORD_RESET
+  EMAIL_VERIFICATION
+  TWO_FACTOR_AUTH
+}
+
+enum RegistrationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Registration {
+  id_registration Int     @id @default(autoincrement())
+  id_department   Int
+  employee_id     String  @unique
+  name            String
+  email           String  @unique
+  email_verified  Boolean @default(false)
+  no_hp           String
+  password        String
+  role            Role    @default(USER)
+
+  // Data tambahan yang diperlukan perusahaan
+  position      String
+  division      String?
+  hire_date     DateTime?
+  work_location String?
+
+  // Status dan metadata
+  status           RegistrationStatus @default(PENDING)
+  rejection_reason String?
+  verified_by      Int?
+  verified_at      DateTime?
+  created_at       DateTime           @default(now())
+  updated_at       DateTime           @updatedAt
+
+  // Relasi
+  department Department @relation(fields: [id_department], references: [id_department])
+  verifier   User?      @relation("RegistrationVerifier", fields: [verified_by], references: [id_users])
+  users      User?      @relation("UserRegistration")
+  otpCodes   OtpCode[]
+
+  @@map("registration")
+}
+
 model User {
-  id_users      Int    @id @default(autoincrement())
-  id_department Int
-  name          String
-  role          Role
-  email         String @unique
-  no_hp         String
-  password      String
+  id_users        Int       @id @default(autoincrement())
+  id_department   Int
+  id_registration Int?      @unique
+  name            String
+  role            Role
+  email           String    @unique
+  no_hp           String
+  password        String
+  email_verified  Boolean   @default(false)
+  last_login      DateTime?
+  created_at      DateTime  @default(now())
+  updated_at      DateTime  @updatedAt
 
   department    Department      @relation(fields: [id_department], references: [id_department])
+  registration  Registration?   @relation("UserRegistration", fields: [id_registration], references: [id_registration])
   requestKanban RequestKanban[]
   persetujuan   Persetujuan[]
+  tokens        Token[]
+  otpCodes      OtpCode[]
+  auditLogs     AuditLog[]
+
+  verifiedRegistrations Registration[] @relation("RegistrationVerifier")
 
   @@map("users")
+}
+
+model Token {
+  id         Int       @id @default(autoincrement())
+  user_id    Int
+  token      String    @unique
+  type       TokenType
+  expires_at DateTime
+  is_revoked Boolean   @default(false)
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+
+  // Metadata untuk tracking
+  ip_address String?
+  user_agent String?
+
+  user User @relation(fields: [user_id], references: [id_users], onDelete: Cascade)
+
+  @@index([user_id])
+  @@index([token])
+  @@index([expires_at])
+  @@map("tokens")
+}
+
+model OtpCode {
+  id              Int       @id @default(autoincrement())
+  user_id         Int?
+  registration_id Int?
+  code            String
+  type            OtpType
+  expires_at      DateTime
+  is_used         Boolean   @default(false)
+  attempts        Int       @default(0)
+  max_attempts    Int       @default(3)
+  created_at      DateTime  @default(now())
+  used_at         DateTime?
+
+  // Metadata untuk security
+  ip_address String?
+  user_agent String?
+
+  user         User?         @relation(fields: [user_id], references: [id_users], onDelete: Cascade)
+  registration Registration? @relation(fields: [registration_id], references: [id_registration], onDelete: Cascade)
+
+  @@index([user_id])
+  @@index([code])
+  @@index([expires_at])
+  @@map("otp_codes")
 }
 
 model Department {
@@ -56,8 +168,9 @@ model Department {
   users         User[]
   requestKanban RequestKanban[]
   persetujuan   Persetujuan[]
+  registration  Registration[]
 
-  @@map("departemen")
+  @@map("department")
 }
 
 model RequestKanban {
@@ -72,10 +185,12 @@ model RequestKanban {
   klasifikasi    String
   keterangan     String
   status         RequestStatus @default(PENDING_APPROVAL)
+  created_at     DateTime      @default(now())
+  updated_at     DateTime      @updatedAt
 
-  user          User           @relation(fields: [id_users], references: [id_users])
-  department    Department     @relation(fields: [id_department], references: [id_department])
-  persetujuan   Persetujuan[]
+  user        User          @relation(fields: [id_users], references: [id_users])
+  department  Department    @relation(fields: [id_department], references: [id_department])
+  persetujuan Persetujuan[]
 
   @@map("request_kanban")
 }
@@ -88,6 +203,8 @@ model Persetujuan {
   approve       Boolean
   approvedAt    DateTime?
   note          String
+  created_at    DateTime     @default(now())
+  updated_at    DateTime     @updatedAt
 
   user          User          @relation(fields: [id_users], references: [id_users])
   department    Department    @relation(fields: [id_department], references: [id_department])
@@ -95,4 +212,24 @@ model Persetujuan {
 
   @@id([id_users, id_department, id_kanban, role])
   @@map("persetujuan")
+}
+
+model AuditLog {
+  id         Int      @id @default(autoincrement())
+  user_id    Int?
+  action     String // LOGIN, LOGOUT, PASSWORD_RESET, REGISTRATION_APPROVED, etc.
+  table_name String? // Nama tabel yang diubah
+  record_id  Int? // ID record yang diubah
+  old_values Json? // Data lama (untuk UPDATE/DELETE)
+  new_values Json? // Data baru (untuk INSERT/UPDATE)
+  ip_address String?
+  user_agent String?
+  created_at DateTime @default(now())
+
+  user User? @relation(fields: [user_id], references: [id_users])
+
+  @@index([user_id])
+  @@index([action])
+  @@index([created_at])
+  @@map("audit_logs")
 }
