@@ -546,8 +546,8 @@ exports.getApprovedKanban = asyncHandler(async (req, res) => {
 exports.getIncomingForPC = asyncHandler(async (req, res) => {
     const { id_users, role, id_department } = req.user;
 
-    if (role !== "STAFF" || id_department !== PC_DEPARTMENT_ID) {
-        throw new ForbiddenError("Only PC Staff can access this endpoint");
+    if (id_department !== PC_DEPARTMENT_ID) {
+        throw new ForbiddenError("Only PC can access this endpoint");
     }
 
     const incoming = await Persetujuan.findIncomingForPCStaff(

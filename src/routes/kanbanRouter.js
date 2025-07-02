@@ -154,7 +154,7 @@ kanbanRouter.get(
 kanbanRouter.get(
     "/incoming-pc",
     checkDepartmentMembership(1), // PC Department ID = 1
-    authorizeRoles("STAFF"),
+    authorizeRoles("STAFF", "SUPERVISOR", "MANAGER"),
     getIncomingForPC
 );
 

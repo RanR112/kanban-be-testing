@@ -653,6 +653,7 @@ class RequestKanban {
                             name: true,
                         },
                     },
+                    note: true
                 },
                 orderBy: {
                     updated_at: "desc",
