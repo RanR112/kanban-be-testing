@@ -137,14 +137,14 @@ function addCompanyHeader(worksheet) {
     // Company name
     worksheet.mergeCells("A1:I1");
     const titleCell = worksheet.getCell("A1");
-    titleCell.value = "PT. Automotive Fasteners Aoyama Indonesia";
+    titleCell.value = "PT. Segara Technology Indonesia";
     titleCell.style = styles.title;
 
     // Company address
     worksheet.mergeCells("A2:I2");
     const addressCell = worksheet.getCell("A2");
     addressCell.value =
-        "Kawasan Industri Mitra Karawang, Jl. Mitra Selatan IV Blok M3 & M4, Parungmulya, Ciampel, Karawang 41363 West Java, Indonesia | Telp: (0267) 8633999";
+        "Jl. Cianjur, Karangpawitan, Karawang Barat, Karawang 41310 West Java, Indonesia | Telp: 0812-5580-2706";
     addressCell.style = {
         font: { size: 10, color: { argb: "FF64748B" } },
         alignment: { horizontal: "center", vertical: "middle" },

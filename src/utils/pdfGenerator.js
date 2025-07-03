@@ -37,17 +37,17 @@ function addCompanyHeader(doc) {
     doc.fontSize(18)
         .fillColor(colors.primary)
         .font("Helvetica-Bold")
-        .text("PT. Automotive Fasteners Aoyama Indonesia", 130, 35);
+        .text("PT. Segara Technology Indonesia", 130, 35);
 
     doc.fontSize(10)
         .fillColor(colors.secondary)
         .font("Helvetica")
         .text(
-            "Kawasan Industri Mitra Karawang, Jl. Mitra Selatan IV Blok M3 & M4, Parungmulya, Ciampel, Karawang 41363 West Java, Indonesia",
+            "Jl. Cianjur, Karangpawitan, Karawang Barat, Karawang 41310 West Java, Indonesia",
             130,
             55
         )
-        .text("Telp: (0267) 8633999", 130, 80);
+        .text("Telp: 0812-5580-2706", 130, 80);
 
     // Separator line
     doc.moveTo(50, 95)
